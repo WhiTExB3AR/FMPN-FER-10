@@ -67,6 +67,18 @@ deactivate
 ``` sh
 pip install -r requirements.txt
 ```
+| Requirements   | version        |
+|----------------|----------------|
+| visdom         | 0.1.8.9        |
+| torch          | 1.10.0+cu113   |
+| torchvision    | 0.11.1+cu113   |
+| torchaudio     | 0.10.0+cu113   |
+| pyngrok        | 5.1.0          |
+| nest_asyncio   | 1.5.1          |
+| opencv-python  | 4.5.4.58       |
+| tensorflow-gpu | 2.6.0          |
+| mtcnn          | 0.1.1          |
+| imutils        | 0.5.4          |
 
 #### Now you can run the project with this command
 
@@ -155,10 +167,51 @@ python main.py --mode test --data_root datasets/CKPlus --test_csv test_ids_1.csv
     /
 ```
 
+## Label of expression
+
+| Expression | Label |
+|------------|-------|
+|   Anger    |   1   |
+|  Contempt  |   2   |
+|   Digust   |   3   |
+|    Fear    |   4   |
+|    Happy   |   5   |
+|   Sadness  |   6   |
+|  Surprise  |   7   |
+|   Neutral  |  -1   |
+
 ## Datasets
 
 * The pseudo ground truth facial motion masks for dataset CK+, MMI and AffectNet are presented in `/datasets`.
 * Training and Testing datasets splits are located in `/datasets`, 10-fold cross validation is used in the project as a general approach.
+
+|  Fold ID  | 0     | 1     | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     | Avg  |
+|-----------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|------|
+|   JAFFE   | 0.850 | 0.895 | 1.000 | 1.000 | 1.000 | 0.444 | 0.529 | 0.778 | 0.833 | 0.895 | 0.82 |
+|    CK+    | 0.654 | 0.917 | 0.860 | 0.911 | 0.944 | 0.989 | 0.973 | 0.972 | 0.974 | 0.964 | 0.92 |
+
+## Classification Report of JAFFE datasets
+
+| Label | Precision | Recall | F1 - Score | Support |
+|-------|-----------|--------|------------|---------|
+|   AN  |   0.786   |  0.963 |    0.844   |   30    |
+|   DI  |   0.904   |  0.875 |    0.849   |   29    |
+|   FE  |   0.922   |  0.927 |    0.907   |   32    |
+|   HA  |   0.944   |  0.963 |    0.947   |   31    |
+|   SA  |   0.906   |  0.834 |    0.716   |   31    |
+|   SU  |   0.910   |  0.967 |    0.932   |   30    |
+
+## Classification Report of CKPlus datasets
+
+| Label | Precision | Recall | F1 - Score | Support |
+|-------|-----------|--------|------------|---------|
+|   AN  |   0.888   |  0.855 |    0.853   |   135   |
+|   CO  |   0.975   |  0.780 |    0.855   |   54    |
+|   DI  |   0.987   |  0.951 |    0.967   |   177   |
+|   FE  |   0.952   |  0.898 |    0.909   |   75    |
+|   HA  |   0.993   |  0.986 |    0.986   |   207   |
+|   SA  |   0.865   |  0.867 |    0.844   |   84    |
+|   SU  |   0.900   |  0.974 |    0.968   |   249   |
 
 ## Citation - References
 
